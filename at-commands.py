@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+# $sudo apt-get install python3-serial
+# $sudo chmod 666 /dev/ttyUSB0
 import serial
 import time
 
@@ -79,6 +81,7 @@ if __name__ == "__main__":
     import argparse
 
     options = argparse.ArgumentParser()
+    #options.add_argument('-c', "--command", type=str, help="command") 
     options.add_argument('-p', "--pdn", type=int, choices=[1,2,3], default=3, help="The PDN number")
     options.add_argument('-d', "--domain", type=str, default="google.com", help="The domain ex: google.com")
     options.add_argument('-v', "--verbose", action="store_true", help="verbose mode")
@@ -92,5 +95,3 @@ if __name__ == "__main__":
     wnc.Open()  
     wnc.Test(pdn=str(args.pdn), domain=args.domain)
     wnc.Close()
-
-      
