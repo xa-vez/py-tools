@@ -1,0 +1,202 @@
+***********************************
+* DEBUG Message
+* INFO Message
+* WARNING Message
+* ERROR Message
+* FATAL Message
+***********************************
+Opening UART...
+< < < <
++SYSSTART
+> AT
+<
+OK
+AT!="showver" displays the version
+> AT!="showver"
+<
+SYSTEM VERSION
+==============
+  FIRMWARE VERSION
+    Bootloader0 : 5.1.1.0 [32110]
+    Bootloader1 : <Unknown>
+    Bootloader2 : <Unknown>
+    NV Info     : 1.1,0,0
+    Software    : 5.1.1.0 [32110] by robot-soft at 2017-08-29 08:17:40
+    UE          : 5.0.0.0c
+  COMPONENTS
+    ZSP0        : 1.0.0-12314
+    ZSP1        : 1.0.99-12293
+
+OK
+AT+CMEE=2 result code and use verbose
+> AT+CMEE=2
+<
+OK
+AT+CPSMS=0 is used to ???
+> AT+CPSMS=0
+<
+OK
+AT+CFUN=1 is used to configure the full functionality level
+> AT+CFUN=1
+<
+OK
+> AT!="setlpm airplane=1 enable=1"
+<
+
+OK
+AT+CGACT=1,3 activate PDP context
+> AT+CGACT=1,3
+<
+OK
+
++CEREG: 0
+
++CEREG: 2
+
++CEREG: 1,"0001","01A2D005",7
+AT+SQNSCFG=1,3,0,0,600,50 Socket configuration parameters
+> AT+SQNSCFG=1,3,0,0,600,50
+<
+OK
+at+sqnscfgext=1,1,0,0,0,0 Socket configuration extended parameters
+> at+sqnscfgext=1,1,0,0,0,0
+<
+OK
+AT+CEREG command returns the EPS registration status
+> AT+CEREG?
+<
++CEREG: 2,1,"0001","01A2D005",7
+
+OK
+AT+cgact command is used to activate ot deactivate the PDP context
+> AT+cgact?
+<
++CGACT: 2,1
++CGACT: 3,1
++CGACT: 4,0
++CGACT: 6,0
++CGACT: 7,0
+
+OK
+AT+SQNSS Check socket status command
+> AT+SQNSS
+<
++SQNSS: 1,0
++SQNSS: 2,0
++SQNSS: 3,0
++SQNSS: 4,0
++SQNSS: 5,0
++SQNSS: 6,0
+
+OK
+at+sqnsd=1,0,80,"172.217.1.238",0,0,1 This commands opens a remote connection vi
+a socket
+> at+sqnsd=1,0,80,"172.217.1.238",0,0,1
+< <
+OK
+at+sqnssend=1 Send some text to socket
+> at+sqnssend=1
+<
+> GET / HTTP/1.1
+Host: google.com
+> GET / HTTP/1.1>
+> Host: google.com>
+>
+send control_z (→)
+> →
++SQNSRING Wait the response
+<
+OK
+<
++SQNSRING: 1,517
+at+sqnsrecv=1,1500 Receive up to 1500 bytes from 1st socket
+> at+sqnsrecv=1,1500
+<
++SQNSRECV: 1,517
+HTTP/1.1 302 Found
+Cache-Control: private
+Content-Type: text/html; charset=UTF-8
+Referrer-Policy: no-referrer
+Location: http://www.google.fr/?gfe_rd=cr&dcr=0&ei=5sS_WaKOC6X58AfPnbmgDQ
+Content-Length: 268
+Date: Mon, 18 Sep 2017 13:06:46 GMT
+
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>302 Moved</TITLE></HEAD><BODY>
+<H1>302 Moved</H1>
+The document has moved
+<A HREF="http://www.google.fr/?gfe_rd=cr&amp;dcr=0&amp;ei=5sS_WaKOC6X58AfPnbmgDQ
+">here</A>.
+</BODY></HTML>
+
+
+OK
+--> Read 545 characters
+Closing UART...
+Opening UART...
+AT+CEREG command returns the EPS registration status
+> AT+CEREG?
+<
++CEREG: 2,1,"0001","01A2D005",7
+
+OK
+AT+cgact command is used to activate ot deactivate the PDP context
+> AT+cgact?
+<
++CGACT: 2,1
++CGACT: 3,1
++CGACT: 4,0
++CGACT: 6,0
++CGACT: 7,0
+
+OK
+AT+SQNSS Check socket status command
+> AT+SQNSS
+<
++SQNSS: 1,2,"192.168.3.2",49153,"172.217.1.238",80
++SQNSS: 2,0
++SQNSS: 3,0
++SQNSS: 4,0
++SQNSS: 5,0
++SQNSS: 6,0
+
+OK
+at+sqnssend=1 Send some text to socket
+> at+sqnssend=1
+<
+> GET / HTTP/1.1
+Host: google.com
+> GET / HTTP/1.1>
+> Host: google.com>
+>
+send control_z (→)
+> →
++SQNSRING Wait the response
+<
+OK
+<
++SQNSRING: 1,517
+at+sqnsrecv=1,1500 Receive up to 1500 bytes from 1st socket
+> at+sqnsrecv=1,1500
+<
++SQNSRECV: 1,517
+HTTP/1.1 302 Found
+Cache-Control: private
+Content-Type: text/html; charset=UTF-8
+Referrer-Policy: no-referrer
+Location: http://www.google.fr/?gfe_rd=cr&dcr=0&ei=JMW_WdLhKqX58AfPnbmgDQ
+Content-Length: 268
+Date: Mon, 18 Sep 2017 13:07:48 GMT
+
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>302 Moved</TITLE></HEAD><BODY>
+<H1>302 Moved</H1>
+The document has moved
+<A HREF="http://www.google.fr/?gfe_rd=cr&amp;dcr=0&amp;ei=JMW_WdLhKqX58AfPnbmgDQ
+">here</A>.
+</BODY></HTML>
+
+
+OK
+--> Read 545 characters
+Closing UART...
