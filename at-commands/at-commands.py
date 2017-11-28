@@ -156,7 +156,7 @@ if __name__ == "__main__":
     import argparse
 
     options = argparse.ArgumentParser()
-    options.add_argument('-p', "--pdn", type=int, choices=[1,2,3], default=3, help="The PDN number")
+    options.add_argument('-p', "--pdn", type=int, choices=[1,2,3], default=1, help="The PDN number")
     options.add_argument('-d', "--domain", type=str, default="google.com", help="The domain ex: google.com")
     options.add_argument('-l', "--lpm", type=int, choices=[1,2,3], default=1, help="The low power mode")
     options.add_argument('-v', "--verbose", action="store_true", help="verbose mode")
