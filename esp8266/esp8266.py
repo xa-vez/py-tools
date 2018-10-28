@@ -12,10 +12,9 @@ class esp8266(object):
         pass
 
     def get_response(self):
-
-	while 1:
-        	data = ser.readline()
-                print data
+            while 1:
+                data = ser.readline()
+                print(data.replace("\r\n", ''))
                 if (data == "ERROR\r\n") : break
                 if (data == "OK\r\n") : break
 
