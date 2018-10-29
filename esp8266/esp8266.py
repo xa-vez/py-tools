@@ -4,6 +4,10 @@ import serial
 import time
 import datetime
 
+
+SER_PORT = '/dev/ttyUSB0'
+
+
 CRED = '\033[91m'
 CGREEN = '\033[92m'
 CBLUE = '\033[94m'
@@ -15,9 +19,10 @@ CGREY = '\033[90m'
 CBLACK = '\033[90m'
 CDEFAULT = '\033[99m'
 CEND = '\033[0m'
+
               
 ser = serial.Serial(
-    port='/dev/ttyAMA0', baudrate=115200, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS, timeout=1)              
+    port=SER_PORT, baudrate=115200, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS, timeout=1)              
 
 class esp8266(object):
 
@@ -25,11 +30,14 @@ class esp8266(object):
         pass
 
     def get_response(self):
+        timeout =0
         while 1: 
+           timeout += 1
            data = ser.readline()
            print(data.replace("\r\n", ''))
            if (data == "ERROR\r\n") : break
            if (data == "OK\r\n") : break
+           if (timeout >= 5) : break
 
     def version(self):
         ser.write('AT+GMR\r\n')
